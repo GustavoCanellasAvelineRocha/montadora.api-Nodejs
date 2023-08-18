@@ -15,12 +15,4 @@ db.serialize(() => {
   popularBanco.finalize();
 });
 
-function getAll() {
-  return new Promise(resolve => {
-    db.all("SELECT modelo,marca,cor FROM carros", (err, carros) => {
-      resolve(carros);
-    });
-  });
-}
-
-module.exports = { getAll };
+module.exports = db;
