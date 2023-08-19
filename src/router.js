@@ -5,7 +5,7 @@ const middlewares = require("./middlewares/carrosmiddlewares")
 
 router.get('/',controller.mostrarLista);
 router.post('/',middlewares.valideBody,controller.salvarCarro);
-router.put('/:id',controller.atualizaCarro)
-router.delete('/:id',middlewares.valideBody,controller.deleteCarro)
+router.put('/:id',middlewares.valideBody,controller.atualizaCarro)
+router.delete('/:id',controller.deleteCarro)
 
 module.exports = router;

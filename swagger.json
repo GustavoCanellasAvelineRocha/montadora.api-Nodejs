@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Montadora",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Obter a lista de carros",
+          "operationId": "mostrarLista",
+          "responses": {
+            "200": {
+              "description": "Lista de carros retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Salvar um novo carro",
+          "operationId": "salvarCarro",
+          "requestBody": {
+            "description": "Dados do carro a ser salvo",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "modelo": {
+                      "type": "string"
+                    },
+                    "cor": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["modelo", "marca"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Carro salvo com sucesso"
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "put": {
+          "summary": "Atualizar um carro",
+          "operationId": "atualizaCarro",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "ID do carro a ser atualizado"
+            }
+          ],
+          "requestBody": {
+            "description": "Dados do carro a ser atualizado",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "modelo": {
+                      "type": "string"
+                    },
+                    "cor": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["modelo", "marca"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Carro atualizado com sucesso"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Excluir um carro",
+          "operationId": "deleteCarro",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": false,
+              "description": "ID do carro a ser deletado"
+            }
+          ],
+          "responses": {
+            "204": {
+                "description": "Carro excluído com sucesso"
+            }
+        }
+      }
+    }
+  }
+}
+  
