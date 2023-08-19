@@ -2,9 +2,11 @@
 
 API criada em NodeJS, com um CRUD basico para testar meus conhecimentos em JavaScript.
 
+A API permite criar carros e salva-los no banco de dados, verificar a lista de carros no banco, além de poder atualizar os carros do banco e deleta-los a vontade.
+
 Já possuio um bom conhecimento de criação de APIS em java, então não foi um grande desafio, todavia, foi um ótimo aprendizado para uma nova linguagem.
 
-Utilizei o SQLite para um banco de dados simples em memoria, e para realizar as requisicoes utilizei o Swagger UI
+Utilizei o SQLite para um banco de dados simples em memoria, e para realizar as requisicoes utilizei o Swagger UI.
 
 Fiquei muito feliz com o resultado! 
 
