@@ -2,9 +2,9 @@
 
 API criada em NodeJS, com um CRUD basico para testar meus conhecimentos em JavaScript.
 
-Já possuio um bom conhecimento de criaçã de APIS em java, então não foi uma missã tão desafiadora
+Já possuio um bom conhecimento de criação de APIS em java, então não foi um grande desafio, todavia, foi um ótimo aprendizado.
 
-fiquei muito feliz com o resultado! 
+Fiquei muito feliz com o resultado! 
 
 # como rodar
 
