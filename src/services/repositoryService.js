@@ -14,6 +14,16 @@ function getAllPromisse() {
   });
 }
 
+// NOVO: obter carro por id
+function getById(id) {
+  return new Promise((resolve) => {
+    db.get("SELECT * FROM carros WHERE id = ?", [id], (err, row) => {
+      // Mantendo seu padrão: ignorar err e resolver com null se não achar
+      resolve(row || null);
+    });
+  });
+}
+
 function saveCarro(carro) {
   return new Promise((resolve) => {
     const { modelo, cor } = carro;
@@ -26,40 +36,36 @@ function saveCarro(carro) {
       const id = this.lastID;
       salvarCarro.finalize();
 
-      const carroCriado = {
-        id: id,
-        modelo: modelo,
-        marca: marca,
-        cor: cor,
-      };
-
+      const carroCriado = { id, modelo, marca, cor };
       resolve(carroCriado);
     });
   });
 }
 
-function atualizaCarro(id,carro) {
-    return new Promise((resolve) => {
-        const { modelo, cor } = carro;
+function atualizaCarro(id, carro) {
+  return new Promise((resolve) => {
+    const { modelo, cor } = carro;
 
-        const updateCarro = db.prepare("UPDATE carros SET modelo = ?,cor = ? WHERE id= ?");
-        updateCarro.run(modelo,cor,id, function () {
-          updateCarro.finalize();
+    const updateCarro = db.prepare(
+      "UPDATE carros SET modelo = ?, cor = ? WHERE id = ?"
+    );
+    updateCarro.run(modelo, cor, id, function () {
+      updateCarro.finalize();
 
-          const carroAtualizado = {
-            id: id,
-            modelo: modelo,
-            marca: "Honda",
-            cor: cor
-          };
-          resolve(carroAtualizado);
-        });
-      });
+      const carroAtualizado = {
+        id: Number(id),
+        modelo,
+        marca: "Honda",
+        cor,
+      };
+      resolve(carroAtualizado);
+    });
+  });
 }
 
 async function deleteCarro(id) {
   return new Promise((resolve) => {
-    const deletarCarro = db.prepare("DELETE FROM carros WHERE id= ?", [id]);
+    const deletarCarro = db.prepare("DELETE FROM carros WHERE id = ?", [id]);
     deletarCarro.run(id, function () {
       deletarCarro.finalize();
       resolve();
@@ -67,4 +73,4 @@ async function deleteCarro(id) {
   });
 }
 
-module.exports = { getAll, saveCarro, deleteCarro, atualizaCarro };
+module.exports = { getAll, getById, saveCarro, deleteCarro, atualizaCarro };
